@@ -1,3 +1,11 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+
+
+// --- Configuración WiFi ---
+const char* ssid = "M";
+const char* password = "Lmbb2103";
+
 // Motor A
 #define L_EN_A 5    // GPIO5 (D1)
 #define R_EN_A 4    // GPIO4 (D2)
@@ -14,6 +22,8 @@ int speedA = 0;
 int speedB = 0;
 int maxSpeed = 800;
 
+ESP8266WebServer server(80);
+
 // Pines de botones
 #define BTN_FWD     16  // D0
 #define BTN_BWD     5   // D1
@@ -22,6 +32,7 @@ int maxSpeed = 800;
 #define BTN_STOP    2   // D4
 
 void setup() {
+  
   serial.begin(9600);
   // Motor A
   pinMode(L_EN_A, OUTPUT);
@@ -46,6 +57,42 @@ void setup() {
   pinMode(BTN_LEFT, INPUT_PULLUP);
   pinMode(BTN_RIGHT, INPUT_PULLUP);
   pinMode(BTN_STOP, INPUT_PULLUP);
+
+  // Conectar a WiFi
+  WiFi.begin(ssid, password);
+  Serial.print("Conectando a WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi conectado!");
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+
+  // Configurar rutas HTTP para recibir comandos
+  server.on("/adelante", HTTP_GET, []() {
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/atras", HTTP_GET, []() {
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/izquierda", HTTP_GET, []() {
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/derecha", HTTP_GET, []() {
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/alto", HTTP_GET, []() {
+    server.send(200, "text/plain", "OK");
+  });
+
+  // Iniciar servidor
+  server.begin();
+  Serial.println("Servidor HTTP iniciado");
 }
 
 void loop() {
@@ -68,6 +115,7 @@ void loop() {
     setSpeed(0, 0);
     setMotorDirection(true, true);
   }
+
 
   delay(50);  // Anti-rebote básico
 }

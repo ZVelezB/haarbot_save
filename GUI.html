@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #2a60b2;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel-control {
+      background-color: #003087;
+      border: 6px solid white;
+      border-radius: 25px;
+      padding: 0.1%;
+      width: 90vw;
+      height: 90vh;
+      margin: auto;
+      display: grid;
+      grid-template-areas:
+        ".        arriba       ."
+        "izquierda   alto   derecha"
+        ".        abajo        .";
+      gap: 1vw;
+      align-items: center;
+      justify-items: center;
+      position: relative;
+    }
+
+    .boton-circular {
+      width: 40vw;
+      height: 40vw;
+      max-width: 205px;
+      max-height: 205px;
+      background-color: #3d3d3d;
+      border: 8px solid black;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .boton-circular svg {
+      width: 90%;
+      height: 90%;
+      fill: #b0b0b0;
+    }
+
+    .arriba    { grid-area: arriba; }
+    .abajo     { grid-area: abajo; }
+    .izquierda { grid-area: izquierda; }
+    .derecha   { grid-area: derecha; }
+    .alto      { grid-area: alto; }
+
+    .esquina {
+      width: 10vw;
+      height: 10vw;
+      max-width: 50px;
+      max-height: 50px;
+      background-color: #3d3d3d;
+      border: 5px solid black;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .esquina.superior-izquierda { top: 10px; left: 10px; }
+    .esquina.superior-derecha   { top: 10px; right: 10px; }
+    .esquina.inferior-izquierda { bottom: 10px; left: 10px; }
+    .esquina.inferior-derecha   { bottom: 10px; right: 10px; }
+
+  </style>
+</head>
+<body>
+
+  <div class="panel-control">
+
+    <div class="boton-circular arriba" onclick="accion('adelante')">
+      <svg viewBox="0 0 100 100">
+        <polygon points="50,20 80,80 20,80" />
+      </svg>
+    </div>
+
+    <div class="boton-circular izquierda" onclick="accion('izquierda')">
+      <svg viewBox="0 0 100 100" style="transform: rotate(-90deg);">
+        <polygon points="50,20 80,80 20,80" />
+      </svg>
+    </div>
+
+    <div class="boton-circular derecha" onclick="accion('derecha')">
+      <svg viewBox="0 0 100 100" style="transform: rotate(90deg);">
+        <polygon points="50,20 80,80 20,80" />
+      </svg>
+    </div>
+
+    <div class="boton-circular abajo" onclick="accion('atras')">
+      <svg viewBox="0 0 100 100" style="transform: rotate(180deg);">
+        <polygon points="50,20 80,80 20,80" />
+      </svg>
+    </div>
+
+     <div class="boton-circular alto" onclick="accion('alto')">
+      <svg viewBox="0 0 100 100">
+        <rect x="30" y="30" width="40" height="40" rx="10" ry="10" />
+      </svg>
+    </div>
+
+    <div class="esquina superior-izquierda"></div>
+    <div class="esquina superior-derecha"></div>
+    <div class="esquina inferior-izquierda"></div>
+    <div class="esquina inferior-derecha"></div>
+
+  </div>
+
+  <script>
+    function accion(direccion) {
+      alert("Comando: " + direccion);
+    }
+  </script>
+
+</body>
+</html>
+
+
+

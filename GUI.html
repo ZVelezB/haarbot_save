@@ -13,8 +13,6 @@
     html, body {
       height: 100%;
       width: 100%;
-      margin: 0;
-      padding: 0;
       background-color: #2a60b2;
       font-family: sans-serif;
       display: flex;
@@ -29,7 +27,6 @@
       padding: 0.1%;
       width: 90vw;
       height: 90vh;
-      margin: auto;
       display: grid;
       grid-template-areas:
         ".        arriba       ."
@@ -53,6 +50,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      transition: background-color 0.1s ease, opacity 0.1s ease;
     }
 
     .boton-circular svg {
@@ -78,42 +76,41 @@
       position: absolute;
     }
 
-    .esquina.superior-izquierda { top: 10px; left: 10px; }
-    .esquina.superior-derecha   { top: 10px; right: 10px; }
-    .esquina.inferior-izquierda { bottom: 10px; left: 10px; }
-    .esquina.inferior-derecha   { bottom: 10px; right: 10px; }
-
+    .superior-izquierda { top: 10px; left: 10px; }
+    .superior-derecha   { top: 10px; right: 10px; }
+    .inferior-izquierda { bottom: 10px; left: 10px; }
+    .inferior-derecha   { bottom: 10px; right: 10px; }
   </style>
 </head>
 <body>
 
   <div class="panel-control">
 
-    <div class="boton-circular arriba" onclick="accion('adelante')">
+    <div id="btn-arriba" class="boton-circular arriba" onclick="accion('adelante')">
       <svg viewBox="0 0 100 100">
         <polygon points="50,20 80,80 20,80" />
       </svg>
     </div>
 
-    <div class="boton-circular izquierda" onclick="accion('izquierda')">
+    <div id="btn-izquierda" class="boton-circular izquierda" onclick="accion('izquierda')">
       <svg viewBox="0 0 100 100" style="transform: rotate(-90deg);">
         <polygon points="50,20 80,80 20,80" />
       </svg>
     </div>
 
-    <div class="boton-circular derecha" onclick="accion('derecha')">
+    <div id="btn-derecha" class="boton-circular derecha" onclick="accion('derecha')">
       <svg viewBox="0 0 100 100" style="transform: rotate(90deg);">
         <polygon points="50,20 80,80 20,80" />
       </svg>
     </div>
 
-    <div class="boton-circular abajo" onclick="accion('atras')">
+    <div id="btn-abajo" class="boton-circular abajo" onclick="accion('atras')">
       <svg viewBox="0 0 100 100" style="transform: rotate(180deg);">
         <polygon points="50,20 80,80 20,80" />
       </svg>
     </div>
 
-     <div class="boton-circular alto" onclick="accion('alto')">
+    <div id="btn-alto" class="boton-circular alto" onclick="accion('alto')">
       <svg viewBox="0 0 100 100">
         <rect x="30" y="30" width="40" height="40" rx="10" ry="10" />
       </svg>
@@ -130,10 +127,24 @@
     function accion(direccion) {
       alert("Comando: " + direccion);
     }
+
+    function parpadear(id, frecuenciaHz) {
+      const elemento = document.getElementById(id);
+      const intervaloMs = 1000 / (frecuenciaHz * 2);
+      let visible = true;
+
+      setInterval(() => {
+        visible = !visible;
+        elemento.style.opacity = visible ? 1 : 0.1;
+      }, intervaloMs);
+    }
+
+    parpadear('btn-arriba', 6);      // 6 Hz
+    parpadear('btn-abajo', 42);       // 8 Hz
+    parpadear('btn-izquierda', 30);  // 10 Hz
+    parpadear('btn-derecha', 20);    // 12 Hz
+    parpadear('btn-alto', 10);
   </script>
 
 </body>
 </html>
-
-
-

@@ -125,10 +125,10 @@
 
   <script>
     function accion(direccion) {      
-      alert("Enviar comando: " + direccion);
-      const instruction = document.getElementById("instruction").value;
-      const ESP32_IP = "http://10.135.213.60/";
-      const url_instruction = {ESP32_IP} + direccion;
+      //
+      const ESP32_IP = "http://10.135.213.93/";
+      const url_instruction = ESP32_IP + direccion;
+      alert("Enviando instrucción: " + url_instruction);
 
       fetch(url_instruction, {
           method: "POST",

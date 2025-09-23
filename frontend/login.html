@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+</head>
+<body>
+    <div class="login-container">
+        <div class="card login-card">
+            <div class="card-body p-5">
+                <div class="login-logo">
+                    <h2 class="fw-bold mb-2">HAARBOT</h2>
+                    <p class="text-muted" id="login-subtitle">Acceso para Pacientes</p>
+                </div>
+                <!-- Favicon-->
+                <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+                <!-- Bootstrap icons-->
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+                <!-- Google fonts-->
+                <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+                <!-- Core theme CSS (includes Bootstrap)-->
+                <link href="css/styles.css" rel="stylesheet" />
+                <link href="css/login-styles.css" rel="stylesheet" />
+        
+                <!-- Selector de tipo de usuario -->
+                <div class="user-type-toggle">
+                    <div class="slider" id="type-slider"></div>
+                    <button type="button" class="user-type-btn active" id="paciente-btn" onclick="changeUserType('paciente')">Paciente</button>
+                    <button type="button" class="user-type-btn" id="evaluador-btn" onclick="changeUserType('evaluador')">Evaluador</button>
+                </div>
+                
+                <!-- Alerta de error -->
+                <div class="alert alert-danger" id="errorAlert" role="alert">
+                    Usuario o contraseña incorrectos. Intente nuevamente.
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="username" placeholder="Usuario" required>
+                        <label for="username">Usuario</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                        <label for="password">Contraseña</label>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="remember">
+                        <label class="form-check-label" for="remember">
+                            Recordar mis datos
+                        </label>
+                    </div>
+                    
+                    <button class="w-100 btn btn-login btn-primary-custom" type="submit">
+                        
+                        <i class="bi bi-person-check btn-icon"></i> Iniciar Sesión
+                    </button>
+                    
+                    <div class="divider">o continuar con</div>
+                    
+                    <button class="w-100 btn btn-login btn-google" type="button">
+                        <i class="bi bi-google btn-icon"></i> Iniciar Sesión con Google
+                    </button>
+                    
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+                    </div>
+                </form>
+                
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <p class="mt-2">Iniciando sesión...</p>
+                </div>
+                
+                <div class="back-link">
+                    <a href="index.html" class="text-decoration-none">
+                        <i class="bi bi-arrow-left"></i> Volver al inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="login-script.js"></script>
+    
+</body>
+</html>

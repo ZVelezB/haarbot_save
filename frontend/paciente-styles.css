@@ -1,0 +1,197 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .user-panel {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .user-info {
+            margin-bottom: 60px;
+        }
+        
+        .user-name {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .user-id {
+            color: #7f8c8d;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .circles-container {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .circle-wrapper {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            border: 4px solid #ddd;
+        }
+        
+        .inner-color {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .circle:hover {
+            transform: scale(1.05);
+        }
+        
+        .frequency-label {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+            position: relative;
+        }
+        
+        /* Animaciones de titileo según frecuencia - solo el color interno */
+        #circle1 .inner-color {
+            background-color: #e74c3c; /* Rojo */
+            animation: blink1 0.5s infinite alternate; /* 2 Hz = 0.5s */
+        }
+        
+        #circle2 .inner-color {
+            background-color: #2ecc71; /* Verde */
+            animation: blink2 0.666s infinite alternate; /* 1.5 Hz = 0.666s */
+        }
+        
+        #circle3 .inner-color {
+            background-color: #f39c12; /* Naranja */
+            animation: blink3 0.333s infinite alternate; /* 3 Hz = 0.333s */
+        }
+        
+        #circle4 .inner-color {
+            background-color: #9b59b6; /* Morado */
+            animation: blink4 1s infinite alternate; /* 1 Hz = 1s */
+        }
+        
+        @keyframes blink1 {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        @keyframes blink2 {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        @keyframes blink3 {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        @keyframes blink4 {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        /* Posicionamiento específico para cada círculo */
+        .circle-wrapper:nth-child(1) {
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .circle-wrapper:nth-child(2) {
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+        }
+        
+        .circle-wrapper:nth-child(3) {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .circle-wrapper:nth-child(4) {
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+        }
+        
+        .instructions {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #495057;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 600px) {
+            .circle {
+                width: 100px;
+                height: 100px;
+                font-size: 14px;
+            }
+            
+            .user-name {
+                font-size: 24px;
+            }
+            
+            .circles-container {
+                height: 400px;
+            }
+        }
